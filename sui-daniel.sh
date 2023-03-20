@@ -28,15 +28,15 @@ sudo mkdir -p ~/sui-node/devnet && cd ~/sui-node/devnet
 sudo wget -O fullnode-template.yaml https://github.com/MystenLabs/sui/raw/main/crates/sui-config/data/fullnode-template.yaml
 sudo wget -O genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
 sudo wget -O docker-compose.yaml https://raw.githubusercontent.com/MystenLabs/sui/main/docker/fullnode/docker-compose.yaml
-sudo sed -i 's/127.0.0.1:9184/0.0.0.0:9184/' fullnode-template.yaml
-sudo sed -i 's/127.0.0.1:9000/0.0.0.0:9000/' fullnode-template.yaml
+sudo sed -i 's/150.129.80.75:9184/0.0.0.0:9184/' fullnode-template.yaml
+sudo sed -i 's/150.129.80.75:9000/0.0.0.0:9000/' fullnode-template.yaml
 sudo docker-compose pull
 sudo docker-compose up -d
 echo "Sui run success"
 }
 
 read_sui(){
-curl --location --request POST 'http://127.0.0.1:9000/' \
+curl --location --request POST 'http://150.129.80.75:9000/' \
     --header 'Content-Type: application/json' \
     --data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }'
 }
